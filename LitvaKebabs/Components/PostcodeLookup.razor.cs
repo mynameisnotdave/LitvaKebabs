@@ -23,7 +23,7 @@ namespace LitvaKebabs.Components
             // Ok lets do that...
             string deliveringToPostcode = DeliveringToPostcode;
             RestResponse? postcodeInformation = await PostcodeAPIRequest("https://api.postcodes.io/postcodes/" + deliveringToPostcode);
-            PostcodeModel.Root postcodeModel = JsonConvert.DeserializeObject<PostcodeModel.Root>(postcodeInformation.ToString());
+            var postcodeModel = JsonConvert.DeserializeObject<PostcodeModel.Root>(postcodeInformation.Content);
             if (postcodeModel != null)
             {
                 if (postcodeModel.status != 200)
@@ -54,7 +54,7 @@ namespace LitvaKebabs.Components
             RestClient client = new RestClient(options);
             RestRequest request = new RestRequest("");
             request.AddHeader("accept", "application/json");
-            RestResponse response = await client.PostAsync(request);
+            RestResponse response = await client.GetAsync(request);
             return response;
         }
         // From https://stackoverflow.com/a/51839058
