@@ -6,16 +6,19 @@ namespace LitvaKebabs.Components
     public partial class OrderButton
     {
         [Parameter]
-        public Dictionary<string, decimal> tableData { get; set; } = new Dictionary<string, decimal>();
+        public string MenuOrSauce { get; set; }
+
+        public List<string> MenuItem = new List<string>();
+
+        public List<decimal> MenuPrice = new List<decimal>();
         OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
-        private void AddMenuItemToReciept()
+        private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
         {
-            foreach(var item in orderMenuRoot.MenuItems)
-            {
-                tableData.Add(item.Key, item.Value);
-                StateHasChanged();
-            }
+     
+            // Increase the quantity of the item clicked in our receipt
             
+            // Update cart on view with the new value
+
         }
     }
 }
