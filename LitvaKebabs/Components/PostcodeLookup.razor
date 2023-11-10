@@ -7,7 +7,7 @@
 @if(GetDistance() < 5.1)
 {
     <span class="postcode-distance-result">@DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi from @deliveringFromPostcode.</span>
-} else
+} else if (DeliveringToPostcode is not null)
 {
     <span class="postcode-too-far">@DeliveringToPostcode is too far from @deliveringFromPostcode! @DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi away.</span>
 }
