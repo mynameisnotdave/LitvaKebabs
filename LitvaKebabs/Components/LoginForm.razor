@@ -3,6 +3,9 @@
 <EditForm Model="@Model" OnValidSubmit="@Submit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
-    <InputText @bind-Value="Model!.Username" />
-    <InputText type="password" @bind-Value="Model!.Password" />
+    <label for="username">Email address:</label>
+    <InputText id="username" @bind-Value="Model!.Username" />
+    <label for="pwd">Password:</label>
+    <InputText id="pwd" type="password" @bind-Value="Model!.Password" />
+    <input type="submit" class="btn btn-primary" value="Submit" />
 </EditForm>
