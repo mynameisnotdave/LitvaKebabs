@@ -7,6 +7,7 @@ namespace LitvaKebabs.Components
 {
     public partial class ReceiptComponent
     {
+        private string navigateTo = "/order-review";
         private List<KebabMenu> GetMenuItem() {
             Dictionary<string, decimal> keyValuePairs = Menu.MenuItems;
             List<KebabMenu> kebabMenus = new List<KebabMenu>();
