@@ -15,9 +15,7 @@ namespace LitvaKebabs.Components
         private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
         {
      
-            // Increase the quantity of the item clicked in our receipt
             
-            // Update cart on view with the new value
 
         }
     }
