@@ -9,13 +9,15 @@ namespace LitvaKebabs.Components
     {
         private List<KebabMenu> GetMenuItem() {
             Dictionary<string, decimal> keyValuePairs = Menu.MenuItems;
-            List<KebabMenu> kebabMenus = new List<KebabMenu>()
+            List<KebabMenu> kebabMenus = new List<KebabMenu>();
+            foreach (var item in keyValuePairs)
             {
-                new KebabMenu(){Item=$"{keyValuePairs.Keys.FirstOrDefault()}",Price=keyValuePairs.Values.FirstOrDefault()}
-            };
+                kebabMenus.Add(new KebabMenu() { Item = item.Key, Price = item.Value });
+            }
             return kebabMenus;
         }
         
+
 
         OrderButton orderButton = new OrderButton();
         
