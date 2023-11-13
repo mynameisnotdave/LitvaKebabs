@@ -3,17 +3,21 @@
         <tr>
             <th>Menu item</th>
             <th>Price</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>
-        <!-- @foreach (var item in orderButton.)
+        @foreach (var menu in GetMenuItem()) 
         {
             <tr>
-                <td>@item.Key</td>
-                <td>@item.Value</td>
+                <td>@menu.Item</td>
+                <td>@menu.Price</td>
+                <td>
+                    <button @onclick="() => GetMenuItem().Remove(menu)">X</button>
+                </td>
             </tr>
-        } -->
+        }
     </tbody>
 </table>
 
-<h3>Total:</h3>
+<h3>Total: £@TotalAmount()</h3>
