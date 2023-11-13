@@ -1,4 +1,6 @@
-﻿<table>
+﻿@inject NavigationManager navigationManager
+
+<table>
     <thead>
         <tr>
             <th>Menu item</th>
@@ -21,3 +23,4 @@
 </table>
 
 <h3>Total: £@TotalAmount()</h3>
+<button class="btn btn-dark" @onclick="() => navigationManager.NavigateTo(navigateTo)">Continue</button>
