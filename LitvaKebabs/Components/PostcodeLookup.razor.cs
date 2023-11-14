@@ -17,6 +17,11 @@ namespace LitvaKebabs.Components
         public string DeliveringToPostcode { get; set; } = string.Empty;
         public decimal DeliveryPrice { get; set; }
 
+        public PostcodeLookup()
+        {
+            DeliveryPrice = CalculateDeliveryPrice();
+        }
+
         private async Task OnPostcodeLookupButtonClicked()
         {
             // So we firstly need to validate the postcode. Maybe we could utilise the API to do this and be lazy about it?
