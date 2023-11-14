@@ -21,6 +21,10 @@
         }
     </tbody>
 </table>
-
+<span class="text-black">Delivery cost: @if (postcodeLookup.DeliveringToPostcode is not null)
+    {
+        <span>£</span>@postcodeLookup.DeliveryPrice
+    }
+</span>
 <h3>Total: £@TotalAmount()</h3>
 <button class="btn btn-dark" @onclick="() => navigationManager.NavigateTo(navigateTo)">Continue</button>
