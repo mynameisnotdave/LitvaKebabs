@@ -1,5 +1,5 @@
 ﻿@inject NavigationManager navigationManager
-
+<div class="container-fluid">
 <table class="table-striped">
     <thead class="thead-dark">
         <tr>
@@ -28,3 +28,4 @@
 </span>
 <h3>Total: £@TotalAmount()</h3>
 <button class="btn btn-dark" @onclick="() => navigationManager.NavigateTo(navigateTo)">Continue</button>
+</div>
