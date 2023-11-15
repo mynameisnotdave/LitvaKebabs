@@ -1,4 +1,5 @@
-﻿using LitvaKebabs.Pages;
+﻿using LitvaKebabs.Models;
+using LitvaKebabs.Pages;
 using Microsoft.AspNetCore.Components;
 
 namespace LitvaKebabs.Components
@@ -6,16 +7,21 @@ namespace LitvaKebabs.Components
     public partial class OrderButton
     {
         [Parameter]
-        public string MenuOrSauce { get; set; }
+        public string MenuItem { get; set; } = string.Empty;
 
-        public List<string> MenuItem = new List<string>();
+        [Parameter]
+        public string MenuPrice {  get; set; } = string.Empty;
 
-        public List<decimal> MenuPrice = new List<decimal>();
+        [Parameter]
+        public List<KebabMenu> MenuValue { get; set; } = new List<KebabMenu>();
+
+        [Parameter]
+        public EventCallback<List<KebabMenu>> MenuItemChanged { get; set; }
+        
         OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
-        private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
+        private Task OnMenuItemClicked()
         {
-     
-            
+
 
         }
     }
