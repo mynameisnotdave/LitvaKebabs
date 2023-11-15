@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace LitvaKebabs.Components
 {
-    public partial class ReceiptComponent
+    public partial class Receipt
     {
         PostcodeLookup postcodeLookup = new();
         private string navigateTo = "/order-review";
-        private List<KebabMenu> GetMenuItem() {
+        public List<KebabMenu> GetMenuItem() {
             Dictionary<string, decimal> keyValuePairs = Menu.MenuItems;
             List<KebabMenu> kebabMenus = new List<KebabMenu>();
             foreach (var item in keyValuePairs)
