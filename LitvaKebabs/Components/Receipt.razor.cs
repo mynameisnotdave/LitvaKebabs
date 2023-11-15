@@ -19,9 +19,10 @@ namespace LitvaKebabs.Components
             return kebabMenus;
         }
         
+        public void RemoveMenuItems()
+        {
 
-
-        OrderButton orderButton = new OrderButton();
+        }
         
         private decimal TotalAmount()
         {
