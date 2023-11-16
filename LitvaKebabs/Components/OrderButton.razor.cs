@@ -18,7 +18,6 @@ namespace LitvaKebabs.Components
         [Parameter]
         public EventCallback<List<KebabMenu>> MenuItemChanged { get; set; }
         
-        OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
         private Task OnMenuItemClicked()
         {
 
