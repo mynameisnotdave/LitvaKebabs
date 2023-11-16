@@ -7,7 +7,9 @@
 @if(GetDistance() < 5.1)
 {
     <span class="postcode-distance-result">@DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi from @deliveringFromPostcode.</span>
-} else if (GetDistance() > 5.1 || DeliveringToPostcode is null)
+}
+// I'm not sure what could get rid of this error message
+else if (GetDistance() > 5.1 || DeliveringToPostcode is null)
 {
     <span class="postcode-too-far">@DeliveringToPostcode is too far from @deliveringFromPostcode! @DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi away.</span>
 }
