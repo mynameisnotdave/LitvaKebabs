@@ -12,6 +12,11 @@ namespace LitvaKebabs.Pages
 
         public List<ReceiptItems> Receipt = new List<ReceiptItems>();
 
+        private void OnOrderButtonClicked()
+        {
+
+        }
+
         // Receipt Type
         public class ReceiptItems
         {

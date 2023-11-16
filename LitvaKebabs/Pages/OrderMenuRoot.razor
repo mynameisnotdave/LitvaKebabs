@@ -8,7 +8,12 @@
 <div class="align-content-around">
 <PostcodeLookup/>
     </div>
-<OrderButton/>
+    <!--Uh oh. I'm not sure what foreaching with an onclick event will do here. Take cover! -->
+    @foreach(var items in MenuItems)
+    {
+       <OrderButton @onclick="OnOrderButtonClicked" MenuItem="@items.Key" MenuPrice="@items.Value"/> 
+    }
+    
 
 <Receipt/>
 </div>
