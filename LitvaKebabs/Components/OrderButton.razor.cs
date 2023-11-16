@@ -10,7 +10,8 @@ namespace LitvaKebabs.Components
         public string MenuItem { get; set; } = string.Empty;
 
         [Parameter]
-        public string MenuPrice {  get; set; } = string.Empty;
+        public decimal MenuPrice {  get; set; }
+
 
         [Parameter]
         public List<KebabMenu> MenuValue { get; set; } = new List<KebabMenu>();
