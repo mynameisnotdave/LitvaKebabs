@@ -1,23 +1,22 @@
 ﻿using LitvaKebabs.Models;
 using LitvaKebabs.Pages;
 using LitvaKebabs.Util;
-using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components;
 
 namespace LitvaKebabs.Components
 {
     public partial class Receipt
     {
-        PostcodeLookup postcodeLookup = new();
+        [Parameter]
+        public string KebabItem {  get; set; } = string.Empty;
+
+        [Parameter]
+        public decimal KebabPrice {  get; set; }
+
+        [Parameter]
+        public int KebabQty { get; set; } = 0;
+
         private string navigateTo = "/order-review";
-        public List<KebabMenu> GetMenuItem() {
-            Dictionary<string, decimal> keyValuePairs = Menu.MenuItems;
-            List<KebabMenu> kebabMenus = new List<KebabMenu>();
-            foreach (var item in keyValuePairs)
-            {
-                kebabMenus.Add(new KebabMenu() { Item = item.Key, Price = item.Value });
-            }
-            return kebabMenus;
-        }
         
         public void RemoveMenuItems()
         {

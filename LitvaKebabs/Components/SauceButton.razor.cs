@@ -10,7 +10,7 @@ namespace LitvaKebabs.Components
         OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
         private void AddMenuItemToReciept()
         {
-            foreach (var item in orderMenuRoot.MenuItems)
+            foreach (KeyValuePair<string, decimal> item in orderMenuRoot.MenuItems)
             {
                 tableData.Add(item.Key, item.Value);
                 StateHasChanged();

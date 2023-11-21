@@ -5,25 +5,25 @@
         <tr>
             <th scope="col">Menu item</th>
             <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
             <th scope="col">Remove</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var menu in GetMenuItem()) 
-        {
+
             <tr>
-                <td>@menu.Item</td>
-                <td>@menu.Price</td>
+                <td>@KebabItem</td>
+                <td>@KebabPrice</td>
                 <td>
-                    <button @onclick="() => GetMenuItem().Remove(menu)">X</button>
+                    <button>X</button>
                 </td>
             </tr>
-        }
+        
     </tbody>
 </table>
-<span class="text-black">Delivery cost: @if (postcodeLookup.DeliveringToPostcode is not null)
+<span class="text-black">Delivery cost: <!-- @if (postcodeLookup.DeliveringToPostcode is not null) -->
     {
-        <span>£</span>@postcodeLookup.DeliveryPrice
+        <span>£</span><!-- @postcodeLookup.DeliveryPrice -->
     }
 </span>
 <h3>Total: £@TotalAmount()</h3>

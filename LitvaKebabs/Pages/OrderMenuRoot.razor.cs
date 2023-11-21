@@ -1,21 +1,18 @@
 ﻿using Microsoft.AspNetCore.Components;
 using LitvaKebabs.Util;
+using LitvaKebabs.Services;
 
 namespace LitvaKebabs.Pages
 {
     public partial class OrderMenuRoot
     {
+        public string KebabItem { get; set; } = string.Empty;
 
-        public Dictionary<string, decimal> MenuItems = Menu.MenuItems;
-  
-        public Dictionary<string, decimal> SauceItems = Menu.SauceItems;
+        public decimal KebabPrice { get; set; }
 
+        public int KebabQty { get; set; } = 0;
         public List<ReceiptItems> Receipt = new List<ReceiptItems>();
 
-        private void OnOrderButtonClicked()
-        {
-
-        }
 
         // Receipt Type
         public class ReceiptItems

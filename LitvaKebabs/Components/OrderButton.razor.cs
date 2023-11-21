@@ -1,6 +1,7 @@
 ﻿using LitvaKebabs.Models;
 using LitvaKebabs.Pages;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace LitvaKebabs.Components
 {
@@ -12,12 +13,16 @@ namespace LitvaKebabs.Components
         [Parameter]
         public decimal MenuPrice {  get; set; }
 
-
         [Parameter]
         public List<KebabMenu> MenuValue { get; set; } = new List<KebabMenu>();
 
         [Parameter]
-        public EventCallback<List<KebabMenu>> MenuItemChanged { get; set; }
+        public EventCallback<string> MenuItemClicked { get; set; }
+
+        private Task OnMenuItemClicked()
+        {
+            return MenuItemClicked.InvokeAsync(MenuItem);
+        }
         
     }
 }

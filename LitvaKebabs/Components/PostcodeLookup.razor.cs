@@ -28,7 +28,7 @@ namespace LitvaKebabs.Components
             // Ok lets do that...
             string deliveringToPostcode = DeliveringToPostcode;
             RestResponse? postcodeInformation = await PostcodeAPIRequest("https://api.postcodes.io/postcodes/" + deliveringToPostcode);
-            var postcodeModel = JsonConvert.DeserializeObject<PostcodeModel.Root>(postcodeInformation.Content);
+            PostcodeModel.Root? postcodeModel = JsonConvert.DeserializeObject<PostcodeModel.Root>(postcodeInformation.Content);
             if (postcodeModel != null)
             {
                 if (postcodeModel.status != 200)
