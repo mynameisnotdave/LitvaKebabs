@@ -14,7 +14,7 @@ namespace LitvaKebabs.Components
         OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
         private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
         {
-     
+            
             
 
         }

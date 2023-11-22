@@ -21,7 +21,7 @@ namespace LitvaKebabs.Components
         
         public void RemoveMenuItems()
         {
-
+            throw new NotImplementedException();
         }
         
         private decimal TotalAmount()
