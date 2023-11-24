@@ -1,6 +1,4 @@
-﻿@using LitvaKebabs.Components;
-@using LitvaKebabs.Util;
-@page "/ordermenu"
+﻿@page "/ordermenu"
 
 <PageTitle>Order menu</PageTitle>
 
@@ -18,11 +16,11 @@
         }
     </ul>
 
-    @foreach (var menuItem in Menu.MenuItems)
+    @foreach (var menuItem in _menuService.GetMenuItems)
     {
         <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
-            <span class="order-button-menu">@menuItem.Key</span>
-            <span class="order-button-price">@menuItem.Value</span>
+            <span class="order-button-menu">@menuItem.Name</span>
+            <span class="order-button-price">@menuItem.Price</span>
         </button>
     }
 
@@ -37,17 +35,3 @@
     <!--<OrderButton/> -->
     <!--<Receipt/>-->
 </div>
-
-@code {
-    private int ReceiptCount = 0;
-    private decimal cartTotal = 0;
-    private List<KeyValuePair<string, decimal>> Cart = new();
-
-
-    private void AddToReceipt(KeyValuePair<string, decimal> item)
-    {
-        cartTotal = 0;
-        Cart.Add(item);
-        ReceiptCount++;
-    }
-}

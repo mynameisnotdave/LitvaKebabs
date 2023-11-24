@@ -1,29 +1,26 @@
 ﻿using Microsoft.AspNetCore.Components;
 using LitvaKebabs.Util;
 using LitvaKebabs.Services;
+using LitvaKebabs.Models;
 
 namespace LitvaKebabs.Pages
 {
     public partial class OrderMenuRoot
     {
-        public string KebabItem { get; set; } = string.Empty;
-
-        public decimal KebabPrice { get; set; }
+        private readonly MenuService _menuService = new MenuService();
 
         public int KebabQty { get; set; } = 0;
-        public List<ReceiptItems> Receipt = new List<ReceiptItems>();
+
+        private int ReceiptCount = 0;
+        private decimal cartTotal = 0;
+        private List<Order> Cart = new();
 
 
-        // Receipt Type
-        public class ReceiptItems
+        private void AddToReceipt(List<Order> item)
         {
-            public string Description { get; set; }
-            public decimal Price { get; set; }
-            public int Quantity { get; set; } = 0;
+            cartTotal = 0;
+            Cart.Add(item);
+            ReceiptCount++;
         }
-
-        // Receipt State
-        
-
     }
 }
