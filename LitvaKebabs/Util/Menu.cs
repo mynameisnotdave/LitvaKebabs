@@ -16,7 +16,6 @@
 
         public static Dictionary<string, decimal> SauceItems = new Dictionary<string, decimal>()
         {
-
             { "MINT SAUCE", 0.49M },
             { "MAYO", 0.49M },
             { "HUMMUS", 0.99M },
