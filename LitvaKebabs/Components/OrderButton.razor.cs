@@ -11,19 +11,14 @@ namespace LitvaKebabs.Components
         public string MenuItem { get; set; } = string.Empty;
 
         [Parameter]
-        public decimal MenuPrice {  get; set; }
+        public decimal MenuPrice { get; set; }
 
-        public List<decimal> MenuPrice = new List<decimal>();
         OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
         private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
         {
-            
-            
 
-        private Task OnMenuItemClicked()
-        {
-            return MenuItemClicked.InvokeAsync(MenuItem);
+
         }
-        
+
     }
 }
