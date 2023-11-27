@@ -14,13 +14,9 @@ namespace LitvaKebabs.Components
 
         private void Submit()
         {
-            if(LoginUser != "customer" || LoginUser != "staff")
+            if (LoginUser == "customer")
             {
-                throw new Exception("ERROR: Login user has not been specified. Should either be 'customer' or 'staff'.");
-            }
-            else if (LoginUser == "customer")
-            {
-                navigationManager.NavigateTo("/customer-portal");
+                navigationManager.NavigateTo("/menu");
             }
             else if (LoginUser == "staff")
             {
