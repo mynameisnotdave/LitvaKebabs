@@ -9,7 +9,7 @@ namespace LitvaKebabs.Services
 
         public MenuService()
         {
-            LiteDatabase database = new LiteDatabase(@"./mydatabase");
+            LiteDatabase database = new LiteDatabase(@"Filename=./mydatabase; Connection=shared");
 
             _menuItemTable = database.GetCollection<MenuItem>("menuItems");
             var hasItems = _menuItemTable.Query().ToList().Count != 0;

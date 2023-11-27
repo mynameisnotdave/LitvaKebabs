@@ -9,7 +9,7 @@ namespace LitvaKebabs.Services
 
         public OrderService()
         {
-            LiteDatabase database = new LiteDatabase(@"./mydatabase1");
+            using LiteDatabase database = new LiteDatabase(@"Filename=./mydatabase1; Connection=shared");
             _orderTable = database.GetCollection<Order>("Orders");
         }
 

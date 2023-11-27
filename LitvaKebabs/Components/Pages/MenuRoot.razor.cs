@@ -6,8 +6,8 @@ namespace LitvaKebabs.Components.Pages
 {
     public partial class MenuRoot
     {
-        private readonly MenuService _menuService = new MenuService();
-        private readonly OrderService _orderService = new OrderService();
+        private readonly MenuService _menuService = new();
+        private readonly OrderService _orderService = new();
 
         public int KebabQty { get; set; } = 0;
 
