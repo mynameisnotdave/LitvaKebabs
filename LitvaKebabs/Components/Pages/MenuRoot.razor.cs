@@ -6,6 +6,8 @@ namespace LitvaKebabs.Components.Pages
 {
     public partial class MenuRoot
     {
+        [Inject]
+        NavigationManager navigationManager {  get; set; }
         private readonly MenuService _menuService = new();
         private readonly OrderService _orderService = new();
 
@@ -22,6 +24,13 @@ namespace LitvaKebabs.Components.Pages
             
             Cart.Add(item);
             ReceiptCount++;
+        }
+
+        private void SubmitOrder()
+        {
+            // TODO: Not sure what to place here for the database stuff.
+            //_orderService.UpdateOrder()
+            navigationManager.NavigateTo("/order-summary");
         }
     }
 }

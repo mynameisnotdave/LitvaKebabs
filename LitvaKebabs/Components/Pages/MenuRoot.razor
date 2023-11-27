@@ -9,7 +9,13 @@
     <div class="align-content-around">
         <PostcodeLookup/>
     </div>
-
+    @foreach (var menuItem in _menuService.GetMenuItems())
+    {
+        <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
+            <span class="order-button-menu">@menuItem.Name</span>
+            <span class="order-button-price">@menuItem.Price</span>
+        </button>
+    }
     <p>@ReceiptCount items in receipt</p>
     <ul>
         @foreach (var item in Cart)
@@ -18,21 +24,16 @@
         }
     </ul>
 
-    @foreach (var menuItem in _menuService.GetMenuItems())
-    {
-        <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
-            <span class="order-button-menu">@menuItem.Name</span>
-            <span class="order-button-price">@menuItem.Price</span>
-        </button>
-    }
+
 
     @foreach (var item in Cart)
     {
         cartTotal = cartTotal + item.Price;
     }
+    <p>Delivery cost: TO BE IMPLEMENTED.</p>
+    <p>Cart Total: £@cartTotal</p>
 
-
-    <p>Cart Total: @cartTotal</p>
+    <button class="btn btn-primary" @onclick="SubmitOrder">Submit</button>
 
     <!--<OrderButton/> -->
     <!--<Receipt/>-->
