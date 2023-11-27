@@ -9,10 +9,8 @@ namespace LitvaKebabs.Services
 
         public OrderService()
         {
-            using (LiteDatabase database = new LiteDatabase(@"./mydatabase"))
-            {
-                _orderTable = database.GetCollection<Order>("Orders");
-            }
+            LiteDatabase database = new LiteDatabase(@"./mydatabase1");
+            _orderTable = database.GetCollection<Order>("Orders");
         }
 
         public Order GetOrder(int id)

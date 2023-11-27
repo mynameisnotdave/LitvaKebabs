@@ -9,13 +9,13 @@ namespace LitvaKebabs.Services
 
         public MenuService()
         {
-            using (LiteDatabase database = new LiteDatabase(@"./mydatabase"))
+            LiteDatabase database = new LiteDatabase(@"./mydatabase");
+
+            _menuItemTable = database.GetCollection<MenuItem>("menuItems");
+            var hasItems = _menuItemTable.Query().ToList().Count != 0;
+            if (!hasItems)
             {
-                _menuItemTable = database.GetCollection<MenuItem>("menuItems");
-                var hasItems = _menuItemTable.Query().ToList().Count != 0;
-                if (!hasItems)
-                {
-                    _menuItemTable.InsertBulk(new List<MenuItem>()
+                _menuItemTable.InsertBulk(new List<MenuItem>()
                     {
                         new MenuItem()
                         {
@@ -94,8 +94,8 @@ namespace LitvaKebabs.Services
                         }
                     });
 
-                }
             }
+
         }
         public List<MenuItem> GetMenuItems()
         {

@@ -12,8 +12,6 @@ namespace LitvaKebabs.Components
 
         [Parameter]
         public decimal MenuPrice { get; set; }
-
-        OrderMenuRoot orderMenuRoot = new OrderMenuRoot();
         private void AddMenuItemToReciept(KeyValuePair<string, decimal> item)
         {
 

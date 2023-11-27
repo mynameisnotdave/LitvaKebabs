@@ -10,3 +10,7 @@
 /.vs
 /LitvaKebabs/libman.json
 /LitvaKebabs/bin/Debug/net8.0
+/LitvaKebabs.Client/bin/Debug/net8.0
+/LitvaKebabs.Client/obj/Debug/net8.0
+/LitvaKebabs.Client/obj/Release/net8.0
+/LitvaKebabs.Client/obj

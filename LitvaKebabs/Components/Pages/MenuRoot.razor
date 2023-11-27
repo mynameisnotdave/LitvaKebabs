@@ -1,0 +1,37 @@
+﻿@page "/menu"
+
+<PageTitle>Order menu</PageTitle>
+
+<h1>Order menu</h1>
+<div class="container-fluid align-content-start">
+    <div class="align-content-around">
+        <PostcodeLookup/>
+    </div>
+
+    <p>@ReceiptCount items in receipt</p>
+    <ul>
+        @foreach (var item in Cart)
+        {
+            <li>@item.Name @item.Price</li>
+        }
+    </ul>
+
+    @foreach (var menuItem in _menuService.GetMenuItems())
+    {
+        <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
+            <span class="order-button-menu">@menuItem.Name</span>
+            <span class="order-button-price">@menuItem.Price</span>
+        </button>
+    }
+
+    @foreach (var item in Cart)
+    {
+        cartTotal = cartTotal + item.Price;
+    }
+
+
+    <p>Cart Total: @cartTotal</p>
+
+    <!--<OrderButton/> -->
+    <!--<Receipt/>-->
+</div>

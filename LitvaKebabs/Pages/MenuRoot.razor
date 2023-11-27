@@ -1,4 +1,4 @@
-﻿@page "/ordermenu"
+﻿@page "/menu"
 
 <PageTitle>Order menu</PageTitle>
 
@@ -12,11 +12,11 @@
     <ul>
         @foreach (var item in Cart)
         {
-            <li>@item.Key @item.Value</li>
+            <li>@item.Name @item.Price</li>
         }
     </ul>
 
-    @foreach (var menuItem in _menuService.GetMenuItems)
+    @foreach (var menuItem in _menuService.GetMenuItems())
     {
         <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
             <span class="order-button-menu">@menuItem.Name</span>
@@ -26,7 +26,7 @@
 
     @foreach (var item in Cart)
     {
-        cartTotal = cartTotal + item.Value;
+        cartTotal = cartTotal + item.Price;
     }
 
 
