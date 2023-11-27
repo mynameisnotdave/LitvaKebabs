@@ -13,7 +13,7 @@ namespace LitvaKebabs.Components.Pages
 
         private int ReceiptCount = 0;
         private decimal cartTotal = 0;
-        private List<MenuItem> Cart = [];
+        private List<MenuItem> Cart = new List<MenuItem>();
 
 
         private void AddToReceipt(MenuItem item)
