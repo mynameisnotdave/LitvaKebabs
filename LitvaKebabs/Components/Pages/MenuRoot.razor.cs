@@ -28,9 +28,8 @@ namespace LitvaKebabs.Components.Pages
 
         private void SubmitOrder()
         {
-            // TODO: Not sure what to place here for the database stuff.
-            //_orderService.UpdateOrder()
             Random random = new();
+            // I can't wait for the first order to be order 935,312
             int ranId = random.Next(1, 1000000);
             Order order = new()
             {
