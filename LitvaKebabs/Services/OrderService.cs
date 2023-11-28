@@ -18,6 +18,11 @@ namespace LitvaKebabs.Services
             return _orderTable.Query().Where(x => x.Id == id).First();
         }
 
+        public List<Order> GetAllOrders()
+        {
+            return _orderTable.Query().ToList();
+        }
+
         public void UpsertOrder(Order order)
         {
             _orderTable.Upsert(order);
