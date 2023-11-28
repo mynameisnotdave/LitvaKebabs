@@ -1,6 +1,7 @@
 ﻿using LitvaKebabs.Models;
 using LitvaKebabs.Services;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.JSInterop;
 
 namespace LitvaKebabs.Components.Pages
@@ -33,23 +34,25 @@ namespace LitvaKebabs.Components.Pages
 
         private async Task SubmitOrder()
         {
-            Random random = new();
-            // I can't wait for the first order to be order 935,312
-            int ranId = random.Next(1, 1000000);
-            Order order = new()
-            {
-                // Please I hope this will not be empty
-                MenuItems = Cart,
-                Id = ranId
-            };
-            _orderService.UpsertOrder(order);
-            if (!_orderService.OrderTableHasItems())
+            if (Cart.Count == 0)
             {
                 await jsRuntime.InvokeVoidAsync("alert", "Cannot proceed, order has no items. Please add items to the cart and try again.");
             }
             else
             {
-                navigationManager.NavigateTo("/order-summary");
+                Random random = new();
+                // I can't wait for the first order to be order 935,312
+                int ranId = random.Next(1, 1000000);
+                Order order = new()
+                {
+                    // Please I hope this will not be empty
+                    MenuItems = Cart,
+                    Id = ranId,
+                    OrderPrice = cartTotal
+                };
+                _orderService.UpsertOrder(order);
+
+                navigationManager.NavigateTo(QueryHelpers.AddQueryString("/order-summary", "id", order.Id.ToString()));
             }
 
         }
