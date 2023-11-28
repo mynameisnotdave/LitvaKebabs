@@ -16,7 +16,11 @@
     </thead>
     <tbody>
         <tr>
-            <td>@string.Join("\n", _orderService.GetOrder(int.Parse(OrderId)).MenuItems)</td>
+            @foreach (var menuItem in _orderService.GetOrder(int.Parse(OrderId)).MenuItems) 
+            {
+               <td>@menuItem.Name</td>
+               <td>@menuItem.Price</td>
+            }
         </tr>
     </tbody>
 </table>
