@@ -7,8 +7,18 @@
 
 <h1>Your order</h1>
 
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Menu item</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@string.Join("\n", _orderService.GetOrder(int.Parse(OrderId)).MenuItems)</td>
+        </tr>
+    </tbody>
+</table>
 
-
-@code {
-        OrderService orderService = new OrderService();
-}
+<button type="submit" class="btn btn-primary h-100 w-200">Submit order</button>
