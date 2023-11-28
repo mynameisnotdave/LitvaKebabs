@@ -1,13 +1,18 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using LitvaKebabs.Models;
 using LitvaKebabs.Services;
-using LitvaKebabs.Models;
+using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace LitvaKebabs.Components.Pages
 {
     public partial class MenuRoot
     {
         [Inject]
-        NavigationManager navigationManager {  get; set; }
+        NavigationManager navigationManager { get; set; }
+
+        [Inject]
+        IJSRuntime jsRuntime { get; set; }
+
         private readonly MenuService _menuService = new();
         private readonly OrderService _orderService = new();
 
@@ -21,12 +26,12 @@ namespace LitvaKebabs.Components.Pages
         private void AddToReceipt(MenuItem item)
         {
             cartTotal = 0;
-            
+
             Cart.Add(item);
             ReceiptCount++;
         }
 
-        private void SubmitOrder()
+        private async Task SubmitOrder()
         {
             Random random = new();
             // I can't wait for the first order to be order 935,312
@@ -37,8 +42,16 @@ namespace LitvaKebabs.Components.Pages
                 MenuItems = Cart,
                 Id = ranId
             };
-            _orderService.UpdateOrder(order);
-            navigationManager.NavigateTo("/order-summary");
+            _orderService.UpsertOrder(order);
+            if (!_orderService.OrderTableHasItems())
+            {
+                await jsRuntime.InvokeVoidAsync("alert", "Cannot proceed, order has no items. Please add items to the cart and try again.");
+            }
+            else
+            {
+                navigationManager.NavigateTo("/order-summary");
+            }
+
         }
     }
 }
