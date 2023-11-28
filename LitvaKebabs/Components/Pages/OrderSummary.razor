@@ -14,14 +14,14 @@
             <th scope="col">Price</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-            @foreach (var menuItem in _orderService.GetOrder(int.Parse(OrderId)).MenuItems) 
+    <tbody>@foreach (var menuItem in _orderService.GetOrder(int.Parse(OrderId)).MenuItems) 
             {
+        <tr>
+            
                <td>@menuItem.Name</td>
                <td>@menuItem.Price</td>
-            }
-        </tr>
+            
+        </tr>}
     </tbody>
 </table>
 
