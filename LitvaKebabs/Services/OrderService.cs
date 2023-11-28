@@ -27,5 +27,14 @@ namespace LitvaKebabs.Services
         {
             _orderTable.Delete(id);
         }
+
+        public bool OrderTableHasItems()
+        {
+            if (_orderTable.Count() == 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
