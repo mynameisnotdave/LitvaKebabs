@@ -1,6 +1,14 @@
-﻿@page "/order-summary"
+﻿@using LitvaKebabs.Models
+@using LitvaKebabs.Services
+@page "/order-summary"
 @rendermode InteractiveAuto
 
 <PageTitle>Your order</PageTitle>
 
 <h1>Your order</h1>
+
+
+
+@code {
+        OrderService orderService = new OrderService();
+}
