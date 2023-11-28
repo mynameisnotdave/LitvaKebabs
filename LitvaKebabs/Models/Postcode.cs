@@ -1,6 +1,6 @@
 ﻿namespace LitvaKebabs.Models
 {
-    public class PostcodeModel
+    public class Postcode
     {
         public class Codes
         {
