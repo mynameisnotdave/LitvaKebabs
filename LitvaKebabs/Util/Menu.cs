@@ -2,7 +2,7 @@
 {
     public static class Menu
     {
-        public static Dictionary<string, decimal> MenuItems = new Dictionary<string, decimal>()
+        public static Dictionary<string, decimal> MenuItems = new()
         {
             { "CHICKEN DÖNER WRAP", 10.95M },
             { "CHICKEN SHISH WRAP", 11.95M },
@@ -14,7 +14,7 @@
             { "FALAFEL, RED PEPPER, RED ONION & HUMMUS WRAP", 10.95M }
         };
 
-        public static Dictionary<string, decimal> SauceItems = new Dictionary<string, decimal>()
+        public static Dictionary<string, decimal> SauceItems = new()
         {
             { "MINT SAUCE", 0.49M },
             { "MAYO", 0.49M },

@@ -9,7 +9,7 @@ namespace LitvaKebabs.Services
 
         public MenuService()
         {
-            LiteDatabase database = new LiteDatabase(@"Filename=./mydatabase; Connection=shared");
+            LiteDatabase database = new(@"Filename=./mydatabase; Connection=shared");
 
             _menuItemTable = database.GetCollection<MenuItem>("menuItems");
             var hasItems = _menuItemTable.Query().ToList().Count != 0;
@@ -17,77 +17,77 @@ namespace LitvaKebabs.Services
             {
                 _menuItemTable.InsertBulk(new List<MenuItem>()
                     {
-                        new MenuItem()
+                        new()
                         {
                             Name = "\"CHICKEN DÖNER WRAP\"",
                             Price = 10.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "CHICKEN SHISH WRAP",
                             Price = 11.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "LAMB YAPRAK WRAP",
                             Price = 12.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "LAMB DÖNER WRAP",
                             Price = 10.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "LAMB SHISH WRAP",
                             Price = 12.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "MIX SHISH WRAP",
                             Price = 12.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "LAMB KÖFTE WRAP",
                             Price = 11.95M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "MINT SAUCE",
                             Price = 0.49M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "MAYO",
                             Price = 0.49M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "HUMMUS",
                             Price = 0.99M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "SALAD CREAM",
                             Price = 0.99M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "TAHINI",
                             Price = 0.99M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "LEMON AND LIME SAUCE",
                             Price = 0.99M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "AJVAR",
                             Price = 1.99M
                         },
-                        new MenuItem()
+                        new()
                         {
                             Name = "KAJMAK",
                             Price = 2.49M

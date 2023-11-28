@@ -55,9 +55,9 @@ namespace LitvaKebabs.Components
 
         private async Task<RestResponse?> PostcodeAPIRequest(string apiUri)
         {
-            RestClientOptions options = new RestClientOptions(apiUri);
-            RestClient client = new RestClient(options);
-            RestRequest request = new RestRequest("");
+            RestClientOptions options = new(apiUri);
+            RestClient client = new(options);
+            RestRequest request = new("");
             request.AddHeader("accept", "application/json");
             RestResponse response = await client.GetAsync(request);
             return response;
