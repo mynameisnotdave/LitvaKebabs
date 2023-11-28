@@ -15,7 +15,7 @@ namespace LitvaKebabs.Components.Pages
 
         private int ReceiptCount = 0;
         private decimal cartTotal = 0;
-        private List<MenuItem> Cart = new List<MenuItem>();
+        private List<MenuItem> Cart = new();
 
 
         private void AddToReceipt(MenuItem item)
@@ -30,6 +30,15 @@ namespace LitvaKebabs.Components.Pages
         {
             // TODO: Not sure what to place here for the database stuff.
             //_orderService.UpdateOrder()
+            Random random = new();
+            int ranId = random.Next(1, 1000000);
+            Order order = new()
+            {
+                // Please I hope this will not be empty
+                MenuItems = Cart,
+                Id = ranId
+            };
+            _orderService.UpdateOrder(order);
             navigationManager.NavigateTo("/order-summary");
         }
     }
