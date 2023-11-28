@@ -18,9 +18,9 @@ namespace LitvaKebabs.Services
             return _orderTable.Query().Where(x => x.Id == id).First();
         }
 
-        public void UpdateOrder(Order order)
+        public void UpsertOrder(Order order)
         {
-            _orderTable.Update(order);
+            _orderTable.Upsert(order);
         }
 
         public void DeleteOrder(int id)
