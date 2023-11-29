@@ -101,5 +101,15 @@ namespace LitvaKebabs.Services
         {
             return _menuItemTable.Query().ToList();
         }
+
+        public void UpsertMenuItem(MenuItem menuItem)
+        {
+            _menuItemTable.Upsert(menuItem);
+        }
+
+        public void DeleteMenuItem(int id)
+        {
+            _menuItemTable.Delete(id);
+        }
     }
 }
