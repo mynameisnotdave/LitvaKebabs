@@ -21,13 +21,25 @@
              @foreach (var menuItem in _menuService.GetMenuItems())
     {
             <tr>
+                <td>@menuItem.Id</td>
                 <td>
-                    <input type="text" value="@menuItem.Name"/>
-                    <button class="btn btn-dark ps-10" @onclick="ActivateEditMode">Edit</button>
+                    @if(!ToggleEditMode) {
+                        @menuItem.Name
+                    }
+                    else {
+                        <input type="text" value="@menuItem.Name"/>
+                    }
+                    <button class="btn btn-dark ps-10" @onclick="(() => ToggleEditMode = true)">Edit</button>
                     <button class="btn btn-danger ps-10" @onclick="RemoveItem">Remove</button>
                 </td>
                 <td>
-                    <input type="text" value="@menuItem.Price"/>
+                    @if(!ToggleEditMode) {
+                        @menuItem.Price
+                    }
+                    else {
+                        <input type="text" value="@menuItem.Price"/>
+                    }
+                    
                 </td>
             </tr>
     }
@@ -43,13 +55,10 @@
 
     }
 
-    private void ActivateEditMode() 
-    {
-
-    }
+    private bool ToggleEditMode = false;
 
     private void RemoveItem()
     {
-        _menuService.RemoveMenuItem();
+        _menuService.DeleteMenuItem(id); // what to pass here?
     }
 }
