@@ -1,4 +1,5 @@
-﻿@page "/staff-portal"
+﻿@using LitvaKebabs.Services
+@page "/staff-portal"
 @rendermode InteractiveServer
 
 <PageTitle>Staff portal</PageTitle>
@@ -7,10 +8,48 @@
 <div class="container-fluid">
     <h2 class="card-subtitle">Menu management</h2>
     <div class="btn-toolbar" role="toolbar">
-        <div class="btn-group mr-10">
-            <button class="btn btn-primary">Add</button>
-            <button class="btn btn-dark">Edit</button>
-            <button class="btn btn-danger">Remove</button>
-        </div>
+       <button class="btn btn-primary" @onclick="AddItem">Add new item</button>
     </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Menu item</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+             @foreach (var menuItem in _menuService.GetMenuItems())
+    {
+            <tr>
+                <td>
+                    <input type="text" value="@menuItem.Name"/>
+                    <button class="btn btn-dark ps-10" @onclick="ActivateEditMode">Edit</button>
+                    <button class="btn btn-danger ps-10" @onclick="RemoveItem">Remove</button>
+                </td>
+                <td>
+                    <input type="text" value="@menuItem.Price"/>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
 </div>
+
+@code {
+    MenuService _menuService = new();
+
+    private void AddItem() 
+    {
+
+    }
+
+    private void ActivateEditMode() 
+    {
+
+    }
+
+    private void RemoveItem()
+    {
+        _menuService.RemoveMenuItem();
+    }
+}
