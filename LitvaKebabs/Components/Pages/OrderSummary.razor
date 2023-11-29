@@ -18,13 +18,13 @@
         @foreach (var menuItem in _orderService.GetOrder(int.Parse(OrderId)).MenuItems) 
         {
         <tr>
-            
                <td>@menuItem.Name</td>
                <td>@menuItem.Price</td>
-            
         </tr>
         }
     </tbody>
 </table>
 
-<button type="submit" class="btn btn-primary h-100 w-200">Submit order</button>
+<button type="submit" class="btn btn-primary h-100 w-200" @onclick="OnSubmitClicked">Submit order</button>
+
+<Popup @ref="popupRef" />
