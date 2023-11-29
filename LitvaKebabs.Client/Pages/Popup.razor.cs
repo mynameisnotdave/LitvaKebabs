@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿/*
+   https://stackoverflow.com/a/72005336
+   CC-BY-SA 4.0
+*/
+
+using Microsoft.AspNetCore.Components;
 
 namespace LitvaKebabs.Client.Pages
 {
