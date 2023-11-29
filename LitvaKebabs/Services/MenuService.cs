@@ -12,8 +12,9 @@ namespace LitvaKebabs.Services
             LiteDatabase database = new(@"Filename=./mydatabase; Connection=shared");
 
             _menuItemTable = database.GetCollection<MenuItem>("menuItems");
-            var hasItems = _menuItemTable.Query().ToList().Count != 0;
             int id = 0;
+            bool hasItems = _menuItemTable.Query().ToList().Count != 0;
+            
             if (!hasItems)
             {
                 _menuItemTable.InsertBulk(new List<MenuItem>()
