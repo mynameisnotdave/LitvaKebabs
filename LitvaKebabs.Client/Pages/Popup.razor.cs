@@ -21,7 +21,7 @@ namespace LitvaKebabs.Client.Pages
             HeaderText = headerText;
             BodyText = bodyText;
             IsVisible = true;
-            StateHasChanged();
+           
         }
 
         private void Close()
@@ -29,7 +29,7 @@ namespace LitvaKebabs.Client.Pages
             HeaderText = string.Empty;
             BodyText = string.Empty;
             IsVisible = false;
-            StateHasChanged();
+            
         }
     }
 }
