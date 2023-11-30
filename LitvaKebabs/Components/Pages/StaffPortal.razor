@@ -1,5 +1,4 @@
 ﻿@using LitvaKebabs.Services
-@using LitvaKebabs.Components
 @page "/staff-portal"
 @rendermode InteractiveServer
 
@@ -9,7 +8,7 @@
 <div class="container-fluid">
     <h2 class="card-subtitle">Menu management</h2>
     <div class="btn-toolbar" role="toolbar">
-       <button class="btn btn-primary" @onclick="(() => ShowAddMenuItemDialog = true)">Add new item</button>
+       <button class="btn btn-primary" @onclick="AddMenuItem">Add new item</button>
     </div>
     <table class="table table-bordered">
         <thead>
@@ -49,15 +48,17 @@
     </table>
 </div>
 
-@if(ShowAddMenuItemDialog) 
-{
-    <AddMenuItemDialog />
-}
+<AddMenuItemDialog @ref="dialog" />
 
 @code {
     MenuService _menuService = new();
+    
+    AddMenuItemDialog dialog;
 
-    private bool ShowAddMenuItemDialog = false;
+    private void AddMenuItem()
+    {
+        dialog.Show();
+    }
 
     private bool ToggleEditMode = false;
 }
