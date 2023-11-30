@@ -1,6 +1,5 @@
 ﻿@if (ShowDialog)
 {
-
     <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -21,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="firstName">Menu item price: </label>
-                            <InputText id="menuPrice" class="form-control" @bind-Value="@MenuItem.Price" placeholder="Enter menu item price"></InputText>
+                            <InputNumber id="menuPrice" class="form-control" @bind-Value="@MenuItem.Price" placeholder="Enter menu item price"></InputNumber>
                             <ValidationMessage For="@(() => MenuItem.Price)" />
                         </div>
                         <button type="submit" class="btn btn-primary">Save menu item</button>
