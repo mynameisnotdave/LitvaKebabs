@@ -12,100 +12,89 @@ namespace LitvaKebabs.Services
             LiteDatabase database = new(@"Filename=./mydatabase; Connection=shared");
 
             _menuItemTable = database.GetCollection<MenuItem>("menuItems");
-            int id = 0;
+            ObjectId id = ObjectId.NewObjectId();
+
             bool hasItems = _menuItemTable.Query().ToList().Count != 0;
-            
+
             if (!hasItems)
             {
                 _menuItemTable.InsertBulk(new List<MenuItem>()
                     {
                         new()
                         {
-                            Id = id++,
+                            Id = ObjectId.NewObjectId(),
                             Name = "\"CHICKEN DÖNER WRAP\"",
                             Price = 10.95M
                         },
                         new()
                         {
-                            Id = id++,
+                            Id = ObjectId.NewObjectId(),
                             Name = "CHICKEN SHISH WRAP",
                             Price = 11.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
+
                             Name = "LAMB YAPRAK WRAP",
                             Price = 12.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "LAMB DÖNER WRAP",
                             Price = 10.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "LAMB SHISH WRAP",
                             Price = 12.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "MIX SHISH WRAP",
                             Price = 12.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "LAMB KÖFTE WRAP",
                             Price = 11.95M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {   Id = ObjectId.NewObjectId(),
                             Name = "MINT SAUCE",
                             Price = 0.49M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "MAYO",
                             Price = 0.49M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "HUMMUS",
                             Price = 0.99M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "SALAD CREAM",
                             Price = 0.99M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "TAHINI",
                             Price = 0.99M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "LEMON AND LIME SAUCE",
                             Price = 0.99M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "AJVAR",
                             Price = 1.99M
                         },
                         new()
-                        {
-                            Id = id++,
+                        {Id = ObjectId.NewObjectId(),
                             Name = "KAJMAK",
                             Price = 2.49M
                         }
