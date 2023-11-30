@@ -23,8 +23,12 @@
         </tr>
         }
     </tbody>
+    <tfoot>
+        <tr>
+            <td>Total: £@_orderService.GetOrder(int.Parse(OrderId)).OrderPrice</td>
+        </tr>
+    </tfoot>
 </table>
 
 <button type="submit" class="btn btn-primary h-100 w-200" @onclick="OnSubmitClicked">Submit order</button>
 
-<!---<Popup @ref="popupRef" />-->
