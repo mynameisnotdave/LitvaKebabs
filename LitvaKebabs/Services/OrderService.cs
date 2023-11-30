@@ -28,6 +28,18 @@ namespace LitvaKebabs.Services
             _orderTable.Upsert(order);
         }
 
+        public decimal GetOrderPrice()
+        {
+            var price = _orderTable.Query()
+                .Select(x => x.OrderPrice)
+                .ToList();
+            foreach (var item in price)
+            {
+                return item;
+            }
+            return 0;
+        }
+
         public void DeleteOrder(int id)
         {
             _orderTable.Delete(id);
