@@ -30,7 +30,7 @@
                         <input type="text" value="@menuItem.Name"/>
                     }
                     <button class="btn btn-dark ps-10" @onclick="(() => ToggleEditMode = true)">Edit</button>
-                    <button class="btn btn-danger ps-10" @onclick="RemoveItem">Remove</button>
+                    <button class="btn btn-danger ps-10" @onclick="(() => _menuService.DeleteMenuItem(menuItem.Id))">Remove</button>
                 </td>
                 <td>
                     @if(!ToggleEditMode) {
@@ -56,9 +56,4 @@
     }
 
     private bool ToggleEditMode = false;
-
-    private void RemoveItem()
-    {
-        _menuService.DeleteMenuItem(id); // what to pass here?
-    }
 }
