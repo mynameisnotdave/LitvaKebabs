@@ -21,12 +21,9 @@ namespace LitvaKebabs.Components.Pages
         [Parameter]
         public string OrderId { get; set; }
 
-        private Popup popupRef;
-
         private void OnSubmitClicked()
         {
-            popupRef.Show("Thank you, your order is complete!");
-            navigationManager.NavigateTo("/menu");
+            navigationManager.NavigateTo("/order-success");
         }
     }
 }
