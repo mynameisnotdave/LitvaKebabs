@@ -1,4 +1,5 @@
 using LitvaKebabs.Components;
+using LitvaKebabs.Services;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,9 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddScoped<IMenuService, MenuService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 WebApplication app = builder.Build();
 
