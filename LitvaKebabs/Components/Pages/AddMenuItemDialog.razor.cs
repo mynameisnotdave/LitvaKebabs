@@ -1,8 +1,10 @@
-﻿using LitvaKebabs.Models;
+﻿// Attr: https://www.c-sharpcorner.com/article/blazor-web-assembly-3-2-addeditdelete-fully-functional-application-part-2/
+
+using LitvaKebabs.Models;
 using LitvaKebabs.Services;
 using Microsoft.AspNetCore.Components;
 
-namespace LitvaKebabs.Components
+namespace LitvaKebabs.Components.Pages
 {
     public partial class AddMenuItemDialog
     {
