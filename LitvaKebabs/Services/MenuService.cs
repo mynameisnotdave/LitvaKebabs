@@ -113,7 +113,7 @@ namespace LitvaKebabs.Services
             _menuItemTable.Upsert(menuItem);
         }
 
-        public void DeleteMenuItem(int id)
+        public void DeleteMenuItem(ObjectId id)
         {
             _menuItemTable.Delete(id);
         }
