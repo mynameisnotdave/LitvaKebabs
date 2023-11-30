@@ -1,4 +1,5 @@
 ﻿@using LitvaKebabs.Services
+@using LitvaKebabs.Components
 @page "/staff-portal"
 @rendermode InteractiveServer
 
@@ -8,18 +9,19 @@
 <div class="container-fluid">
     <h2 class="card-subtitle">Menu management</h2>
     <div class="btn-toolbar" role="toolbar">
-       <button class="btn btn-primary" @onclick="AddItem">Add new item</button>
+       <button class="btn btn-primary" @onclick="(() => ShowAddMenuItemDialog = true)">Add new item</button>
     </div>
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th scope="col">Menu item ID</th>
                 <th scope="col">Menu item</th>
                 <th scope="col">Price</th>
             </tr>
         </thead>
         <tbody>
              @foreach (var menuItem in _menuService.GetMenuItems())
-    {
+            {
             <tr>
                 <td>@menuItem.Id</td>
                 <td>
@@ -47,13 +49,15 @@
     </table>
 </div>
 
+@if(ShowAddMenuItemDialog) 
+{
+    <AddMenuItemDialog />
+}
+
 @code {
     MenuService _menuService = new();
 
-    private void AddItem() 
-    {
-
-    }
+    private bool ShowAddMenuItemDialog = false;
 
     private bool ToggleEditMode = false;
 }
