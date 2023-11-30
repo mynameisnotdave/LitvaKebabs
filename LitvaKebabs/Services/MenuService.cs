@@ -107,9 +107,13 @@ namespace LitvaKebabs.Services
             return _menuItemTable.Query().ToList();
         }
 
-        public void UpsertMenuItem(MenuItem menuItem)
+        public void UpdateMenuItem(MenuItem menuItem)
         {
-            _menuItemTable.Upsert(menuItem);
+            _menuItemTable.Update(menuItem);
+        }
+        public void InsertMenuItem(MenuItem menuItem)
+        {
+            _menuItemTable.Insert(menuItem);
         }
 
         public void DeleteMenuItem(ObjectId id)

@@ -34,7 +34,7 @@ namespace LitvaKebabs.Components.Pages
         }
         protected async Task HandleValidSubmit()
         {
-            MenuService.UpsertMenuItem(MenuItem);
+            MenuService.InsertMenuItem(MenuItem);
             ShowDialog = false;
             await CloseEventCallback.InvokeAsync(true);
             StateHasChanged();

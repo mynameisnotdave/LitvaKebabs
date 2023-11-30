@@ -7,7 +7,9 @@ namespace LitvaKebabs.Services
     {
         public List<MenuItem> GetMenuItems();
 
-        public void UpsertMenuItem(MenuItem menuItem);
+        public void InsertMenuItem(MenuItem menuItem);
+
+        public void UpdateMenuItem(MenuItem menuItem);
 
         public void DeleteMenuItem(ObjectId id);
 
