@@ -24,23 +24,12 @@
             <tr>
                 <td>@menuItem.Id</td>
                 <td>
-                    @if(!ToggleEditMode) {
-                        @menuItem.Name
-                    }
-                    else {
-                        <input type="text" value="@menuItem.Name"/>
-                    }
-                    <button class="btn btn-dark ps-10" @onclick="(() => ToggleEditMode = true)">Edit</button>
-                    <button class="btn btn-danger ps-10" @onclick="(() => _menuService.DeleteMenuItem(menuItem.Id))">Remove</button>
+                  <input type="text" value="@menuItem.Name"/>
+                  <button class="btn btn-primary mx-1" @onclick="(() => _menuService.UpsertMenuItem(menuItem))">Modify</button>
+                  <button class="btn btn-danger mx-1" @onclick="(() => _menuService.DeleteMenuItem(menuItem.Id))">Remove</button>
                 </td>
                 <td>
-                    @if(!ToggleEditMode) {
-                        @menuItem.Price
-                    }
-                    else {
-                        <input type="text" value="@menuItem.Price"/>
-                    }
-                    
+                 <input type="text" value="@menuItem.Price"/> 
                 </td>
             </tr>
     }
