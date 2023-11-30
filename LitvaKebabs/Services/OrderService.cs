@@ -3,7 +3,7 @@ using LitvaKebabs.Models;
 
 namespace LitvaKebabs.Services
 {
-    public class OrderService
+    public class OrderService : IOrderService
     {
         private ILiteCollection<Order> _orderTable;
 

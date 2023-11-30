@@ -3,7 +3,7 @@ using LitvaKebabs.Models;
 
 namespace LitvaKebabs.Services
 {
-    public class MenuService
+    public class MenuService : IMenuService
     {
         private ILiteCollection<MenuItem> _menuItemTable;
 
@@ -12,7 +12,6 @@ namespace LitvaKebabs.Services
             LiteDatabase database = new(@"Filename=./mydatabase; Connection=shared");
 
             _menuItemTable = database.GetCollection<MenuItem>("menuItems");
-            ObjectId id = ObjectId.NewObjectId();
 
             bool hasItems = _menuItemTable.Query().ToList().Count != 0;
 
