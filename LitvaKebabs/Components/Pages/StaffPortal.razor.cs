@@ -7,7 +7,6 @@ namespace LitvaKebabs.Components.Pages
 {
     public partial class StaffPortal
     {
-        private decimal NewPrice { get; set; }
         public MenuItem MenuItem { get; set; }
 
         MenuService _menuService = new();
