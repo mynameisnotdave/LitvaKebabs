@@ -24,14 +24,24 @@
             {
             <tr>
                 <td>@menuItem.Id</td>
-                <td>
-                <InputText Value="@menuItem.Name" ValueChanged="NameChanged" ValueExpression="() => menuItem.Name" />
+                <td>                    
+                    <span class="p-1">Current value:</span>
+                    @menuItem.Name
+                    
+                    <InputText id="nameField" bind-Value="@NewName" ValueExpression="() => NewName"/>
+                    @NewName
+
                 </td>
                 <td>
-                <InputNumber Value="@menuItem.Price" ValueChanged="PriceChanged" ValueExpression="() => menuItem.Price "/>
+                    <span class="p-1">Current value:</span>
+                    @menuItem.Price
+                    <label for="nameField">New value:</label>
+                    <InputNumber TValue="decimal" bind-Value="@NewPrice" ValueExpression="() => NewPrice"/>
+                    @NewPrice
+                    
                 </td>
                     <td>
-                        <button class="btn btn-primary mx-1" @onclick="OnAmendedItem">Modify</button>
+                        <button class="btn btn-primary mx-1" @onclick="(() => _menuService.UpdateMenuItem(menuItem))">Modify</button>
                         <button class="btn btn-danger mx-1" @onclick="(() => _menuService.DeleteMenuItem(menuItem.Id))">Remove</button>
                     </td>
             </tr>

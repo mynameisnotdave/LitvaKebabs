@@ -11,6 +11,9 @@ namespace LitvaKebabs.Components.Pages
 
         MenuService _menuService = new();
 
+        private string NewName;
+        private decimal NewPrice;
+
         AddMenuItemDialog dialog;
 
         private void AddMenuItem()
