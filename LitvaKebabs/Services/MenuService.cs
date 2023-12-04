@@ -111,6 +111,12 @@ namespace LitvaKebabs.Services
         {
             _menuItemTable.Update(menuItem);
         }
+
+        public void UpdateMenuItem(BsonValue id, MenuItem menuItem) 
+        { 
+            _menuItemTable.Update(id, menuItem);
+        }
+
         public void InsertMenuItem(MenuItem menuItem)
         {
             _menuItemTable.Insert(menuItem);

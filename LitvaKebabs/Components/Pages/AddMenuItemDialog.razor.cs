@@ -1,8 +1,10 @@
 ﻿// Attr: https://www.c-sharpcorner.com/article/blazor-web-assembly-3-2-addeditdelete-fully-functional-application-part-2/
 
+using LiteDB;
 using LitvaKebabs.Models;
 using LitvaKebabs.Services;
 using Microsoft.AspNetCore.Components;
+using System.ComponentModel.DataAnnotations;
 
 namespace LitvaKebabs.Components.Pages
 {
@@ -17,6 +19,17 @@ namespace LitvaKebabs.Components.Pages
 
         [Parameter]
         public EventCallback<bool> CloseEventCallback { get; set; }
+
+        [Parameter, Required]
+        public string AddOrModify { get; set; }
+
+        public MenuItem EditingMenuItem { get; set; } = new()
+        {
+            Id = ObjectId.NewObjectId(),
+            Name = "This is a test",
+            Price = 9.99M
+        };
+
         public void Show()
         {
             ResetDialog();
@@ -34,7 +47,15 @@ namespace LitvaKebabs.Components.Pages
         }
         protected async Task HandleValidSubmit()
         {
-            MenuService.InsertMenuItem(MenuItem);
+            if (AddOrModify == "add")
+            {
+                MenuService.InsertMenuItem(MenuItem);
+            } 
+            else if (AddOrModify == "modify") 
+            {
+                MenuService.UpdateMenuItem(EditingMenuItem);            
+            }
+            
             ShowDialog = false;
             await CloseEventCallback.InvokeAsync(true);
             StateHasChanged();

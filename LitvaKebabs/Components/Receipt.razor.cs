@@ -1,6 +1,5 @@
 ﻿using LitvaKebabs.Models;
 using LitvaKebabs.Components.Pages;
-using LitvaKebabs.Util;
 using Microsoft.AspNetCore.Components;
 
 namespace LitvaKebabs.Components

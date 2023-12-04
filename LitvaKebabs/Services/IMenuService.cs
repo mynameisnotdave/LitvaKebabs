@@ -11,6 +11,8 @@ namespace LitvaKebabs.Services
 
         public void UpdateMenuItem(MenuItem menuItem);
 
+        public void UpdateMenuItem(BsonValue id, MenuItem menuItem);
+
         public void DeleteMenuItem(ObjectId id);
 
     }

@@ -14,22 +14,21 @@ namespace LitvaKebabs.Components.Pages
         private string NewName;
         private decimal NewPrice;
 
-        AddMenuItemDialog dialog;
+        AddMenuItemDialog addDialog;
+        AddMenuItemDialog modifyDialog;
 
         private void AddMenuItem()
         {
-            dialog.Show();
+            addDialog.Show();
         }
 
         private EventCallback<string> NameChanged {  get; set; }
         private EventCallback<decimal> PriceChanged { get; set; }
 
-        private void OnAmendedItem()
+        private void OnAmendedItem(MenuItem menuItem)
         {
-            MenuItem = new();
-
-            _menuService.UpdateMenuItem(MenuItem);
-            StateHasChanged();
+            addDialog.EditingMenuItem = menuItem;
+            modifyDialog.Show();
         }
     }
 }
