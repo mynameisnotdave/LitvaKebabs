@@ -1,0 +1,11 @@
+﻿@inject NavigationManager navigationManager
+
+<EditForm Model="@Model" OnValidSubmit="@Submit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <label for="username">Email address:</label>
+    <InputText id="username" @bind-Value="Model!.UserUsername" />
+    <label for="pwd">Password:</label>
+    <InputText id="pwd" type="password" @bind-Value="Model!.UserPassword" />
+    <input type="submit" class="btn btn-primary" value="Submit" />
+</EditForm>

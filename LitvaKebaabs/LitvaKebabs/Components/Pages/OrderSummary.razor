@@ -1,0 +1,34 @@
+﻿@using LitvaKebabs.Models
+@using LitvaKebabs.Services
+@page "/order-summary"
+@rendermode InteractiveAuto
+
+<PageTitle>Your order</PageTitle>
+
+<h1>Your order</h1>
+
+<!--<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Menu item</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var menuItem in _orderService.GetOrder(int.Parse(OrderId)).MenuItems) 
+        {
+        <tr>
+               <td>@menuItem.Name</td>
+               <td>@menuItem.Price</td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total: £@_orderService.GetOrder(int.Parse(OrderId)).OrderPrice</td>
+        </tr>
+    </tfoot>
+</table>-->
+
+<button type="submit" class="btn btn-primary h-100 w-200" @onclick="OnSubmitClicked">Submit order</button>
+
