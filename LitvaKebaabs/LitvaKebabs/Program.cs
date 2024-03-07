@@ -10,6 +10,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<LitvaKebabsContext>();
 
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
