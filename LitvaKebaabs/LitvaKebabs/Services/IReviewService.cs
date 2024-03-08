@@ -1,10 +1,7 @@
 ﻿namespace LitvaKebabs.Services
 {
-    public interface IReviewService : IDbActions
+    public interface IReviewService 
     {
-        protected override void Create(Review review)
-        {
 
-        }
     }
 }
