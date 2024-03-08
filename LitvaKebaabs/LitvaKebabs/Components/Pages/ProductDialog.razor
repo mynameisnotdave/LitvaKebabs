@@ -1,4 +1,7 @@
-﻿<!-- Attr: https://www.c-sharpcorner.com/article/blazor-web-assembly-3-2-addeditdelete-fully-functional-application-part-2/ -->
+﻿@using LitvaKebabs.Services
+<!-- Attr: https://www.c-sharpcorner.com/article/blazor-web-assembly-3-2-addeditdelete-fully-functional-application-part-2/ -->
+
+@inject LitvaKebabsContext DbContext
 
 @if (ShowDialog)
 {
@@ -24,12 +27,12 @@
                         <ValidationSummary />
                         <div class="form-group">
                             <label for="lastName">Menu item name: </label>
-                            <InputText id="menuItem" class="form-control" placeholder="Enter name of menu item"></InputText>
+                            <InputText id="menuItem" class="form-control" @bind-Value="@Product.ProductName" placeholder="Enter name of menu item"></InputText>
                             <ValidationMessage For="@(() => Product.ProductName)" />
                         </div>
                         <div class="form-group">
                             <label for="firstName">Menu item price: </label>
-                            <InputNumber id="menuPrice" class="form-control" TValue="decimal" Enter menu item price"></InputNumber>
+                            <InputNumber id="menuPrice" class="form-control" @bind-Value="Product.ProductPrice" placeholder="Enter menu item price"></InputNumber>
                             <ValidationMessage For="@(() => Product.ProductPrice)" />
                         </div>
                         <button type="submit" class="btn btn-primary mt-2">Save menu item</button>

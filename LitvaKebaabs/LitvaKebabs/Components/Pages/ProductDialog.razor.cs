@@ -7,8 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LitvaKebabs.Components.Pages
 {
-    public partial class AddMenuItemDialog
+    public partial class ProductDialog
     {
+        
         public Product Product { get; set; } = new Product();
 
 
