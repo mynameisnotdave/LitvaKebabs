@@ -1,5 +1,6 @@
 using LitvaKebabs.Components;
 using LitvaKebabs.Services;
+using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +9,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddDbContext<LitvaKebabsContext>();
+builder.Services.AddDbContext<LitvaKebabsContext>(opt =>
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+
 
 WebApplication app = builder.Build();
 
