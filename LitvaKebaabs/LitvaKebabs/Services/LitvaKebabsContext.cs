@@ -3,19 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LitvaKebabs.Services
 {
-    public class LitvaKebabsContext : DbContext
+    public class LitvaKebabsContext(DbContextOptions<LitvaKebabsContext> options) : DbContext(options)
     {
-        protected readonly IConfiguration _configuration;
-        public LitvaKebabsContext(DbContextOptions<LitvaKebabsContext> options, IConfiguration configuration) : base(options)
-        {
-          _configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("WebApiDatabase"));
-        }
-
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderProduct> OrderProduct { get; set; }
