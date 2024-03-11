@@ -44,17 +44,12 @@
     </table>
 </div>
 
-<ProductDialog AddOrModify="add" @ref="addDialog" />
+<ProductDialog AddOrModify="add" @ref="addDialog" ProductState=@DisplayNewProduct />
 <ProductDialog AddOrModify="modify" @ref="modifyDialog" />
 
 @code {
 
     public Product MenuItem { get; set; }
-
-    /*MenuService _menuService = new();*/
-
-    private string NewName;
-    private decimal NewPrice;
 
     ProductDialog addDialog;
     ProductDialog modifyDialog;
@@ -66,13 +61,16 @@
         addDialog.Show();
     }
 
-    private EventCallback<string> NameChanged {  get; set; }
-    private EventCallback<decimal> PriceChanged { get; set; }
-
-    private void OnAmendedItem(Product menuItem)
+    private void OnAmendedItem()
     {
         /*addDialog.EditingMenuItem = menuItem;*/
         modifyDialog.Show();
+    }
+
+    private async void DisplayNewProduct(Product value)
+    {
+        _products.Add(value);
+        await LitvaKebabsContext.AddAsync(value);
     }
 
     protected override async Task OnInitializedAsync()
