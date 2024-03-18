@@ -9,14 +9,14 @@
 <h1 class="text-center">Welcome to the Litva Kebabs Order System v0.0.1</h1>
 <div class="text-center">
     <h2>Customer?</h2>
-    <button class="btn" @onclick="(() => ShowCustomerComponent = true)">Log in here (as customer)</button>
+    <button class="btn" @onclick="() => ShowCustomerComponent = true">Log in here (as customer)</button>
     @if(ShowCustomerComponent)
     {
        <LoginForm LoginUser="customer" />
     }
 
     <h2>Staff?</h2>
-    <button class="btn" @onclick="(() => ShowStaffComponent = true)">Log in here (as staff)</button>
+    <button class="btn" @onclick="() => ShowStaffComponent = true">Log in here (as staff)</button>
     @if(ShowStaffComponent)
     {
        <LoginForm LoginUser="staff" /> 
