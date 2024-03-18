@@ -3,7 +3,7 @@
 @using Microsoft.EntityFrameworkCore
 @page "/staff-portal"
 @rendermode InteractiveServer
-@inject LitvaKebabsContext LitvaKebabsContext
+@inject IDbContextFactory<LitvaKebabsContext> LitvaKebabsContext
 @inject NavigationManager NavMan
 
 <PageTitle>Staff portal</PageTitle>
@@ -68,25 +68,27 @@
         modifyDialog.Show();
     }
 
-    private async void DisplayNewProduct(Product value)
+    private async Task DisplayNewProduct(Product value)
     {
         addDialog.Close();
         _products.Add(value);
-        await LitvaKebabsContext.AddAsync(value);
-        await LitvaKebabsContext.SaveChangesAsync();
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        await context.Product.AddAsync(value);
+        await context.SaveChangesAsync();
     }
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1000);
-
-        _products = await LitvaKebabsContext.Product.ToListAsync();
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        _products = await context.Product.ToListAsync();
     }
 
     private async Task DeleteProduct(Product product)
     {
-        LitvaKebabsContext.Product.Remove(product);
-        await LitvaKebabsContext.SaveChangesAsync();
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        context.Product.Remove(product);
+        await context.SaveChangesAsync();
     }
 
 }
