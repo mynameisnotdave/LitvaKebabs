@@ -1,7 +1,7 @@
 ﻿@using LitvaKebabs.Models
 @inject NavigationManager navigationManager
 
-<EditForm Model="@Model" OnValidSubmit="@Submit">
+<EditForm FormName="login-form" Model="@Model" OnValidSubmit="@Submit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <label for="username">Email address:</label>

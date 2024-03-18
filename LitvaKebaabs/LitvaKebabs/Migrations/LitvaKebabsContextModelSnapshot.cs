@@ -34,9 +34,15 @@ namespace LitvaKebabs.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("CustomerName")
+                    b.Property<string>("CustomerFirstName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("CustomerLastName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<string>("CustomerPhone")
                         .IsRequired()

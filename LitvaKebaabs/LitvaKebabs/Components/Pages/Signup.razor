@@ -1,0 +1,22 @@
+@page "/signup"
+@using LitvaKebabs.Models
+<h3>Create an account</h3>
+
+<EditForm FormName="signup-form" Model="@Model" OnValidSubmit="@Submit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <label for="customer-first-name">First name:</label>
+    <InputText id="customer-first-name" @bind-Value="Model.CustomerFirstName" />
+    <label for="customer-last-name">Last name:</label>
+    <InputText id="customer-last-name" @bind-Value="Model.CustomerLastName" />
+    <label for="customer-address" @bind-Value="Model.CustomerAddress">First line of the address:</label>
+</EditForm>
+
+@code {
+    public Customer Model;
+
+    public void Submit()
+    {
+        throw new NotImplementedException();
+    }
+}
