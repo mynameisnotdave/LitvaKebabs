@@ -79,9 +79,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(1000);
+        
         await using var context = await LitvaKebabsContext.CreateDbContextAsync();
-        _products = await context.Product.ToListAsync();
+        await Task.Delay(100);
+        _products = await context.Product.ToListAsync() ?? new List<Product>();
     }
 
     private async Task DeleteProduct(Product product)
