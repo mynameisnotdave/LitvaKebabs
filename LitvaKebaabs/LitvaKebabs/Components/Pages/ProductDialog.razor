@@ -1,5 +1,6 @@
 ﻿@using LitvaKebabs.Services
 @using System.ComponentModel.DataAnnotations
+@using LitvaKebabs.Models
 <!-- Attr: https://www.c-sharpcorner.com/article/blazor-web-assembly-3-2-addeditdelete-fully-functional-application-part-2/ -->
 
 @inject LitvaKebabsContext DbContext
@@ -73,6 +74,6 @@
     }
     protected async Task HandleValidSubmit()
     {
-        ProductState.InvokeAsync(Product);
+        await ProductState.InvokeAsync(Product);
     }
 }

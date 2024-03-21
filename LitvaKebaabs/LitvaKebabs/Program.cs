@@ -9,7 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddDbContext<LitvaKebabsContext>(opt =>
+builder.Services.AddDbContextFactory<LitvaKebabsContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase")));
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();

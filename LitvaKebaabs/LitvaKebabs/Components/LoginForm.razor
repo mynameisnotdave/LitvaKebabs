@@ -1,6 +1,7 @@
-﻿@inject NavigationManager navigationManager
+﻿@using LitvaKebabs.Models
+@inject NavigationManager navigationManager
 
-<EditForm Model="@Model" OnValidSubmit="@Submit">
+<EditForm FormName="login-form" Model="@Model" OnValidSubmit="@Submit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <label for="username">Email address:</label>
@@ -9,3 +10,25 @@
     <InputText id="pwd" type="password" @bind-Value="Model!.UserPassword" />
     <input type="submit" class="btn btn-primary" value="Submit" />
 </EditForm>
+
+@code {
+    [Parameter]
+    public string LoginUser { get; set; }
+
+    public User? Model { get; set; }
+
+    protected override void OnInitialized() => Model ??= new();
+
+    private void Submit()
+    {
+        if (LoginUser == "customer")
+        {
+            navigationManager.NavigateTo("/menu");
+        }
+        else if (LoginUser == "staff")
+        {
+            navigationManager.NavigateTo("/staff-portal");
+        }
+    }
+
+}

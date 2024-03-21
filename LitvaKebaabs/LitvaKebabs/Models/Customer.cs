@@ -5,8 +5,10 @@ namespace LitvaKebabs.Models
     public class Customer
     {
         public int CustomerId { get; set; }
-        public string CustomerName { get; set; } = string.Empty;
-
+        [MaxLength(200)]
+        public string CustomerFirstName { get; set; } = string.Empty;
+        [MaxLength(200)]
+        public string CustomerLastName { get; set; } = string.Empty;
         public string CustomerAddress { get; set; } = string.Empty;
         [MaxLength(58)]
         public string CustomerPostTown { get; set; } = string.Empty;

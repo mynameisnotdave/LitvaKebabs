@@ -3,7 +3,8 @@
 @using Microsoft.EntityFrameworkCore
 @page "/staff-portal"
 @rendermode InteractiveServer
-@inject LitvaKebabsContext LitvaKebabsContext
+@inject IDbContextFactory<LitvaKebabsContext> LitvaKebabsContext
+@inject NavigationManager NavMan
 
 <PageTitle>Staff portal</PageTitle>
 
@@ -15,10 +16,11 @@
     </div>
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th scope="col">Menu item</th>
-                <th scope="col">Price</th>
-            </tr>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Menu item</th>
+            <th scope="col">Price</th>
+        </tr>
         </thead>
         <tbody>            
         @if (_products is null)
@@ -30,14 +32,15 @@
         @foreach (var product in _products)
         {
 
-                <tr>
-                    <td>@product.ProductName</td>
-                    <td>@product.ProductPrice</td>
-                    <td>
-                        <button class="btn btn-primary mx-1">Modify</button>
-                        <button class="btn btn-danger mx-1">Remove</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.ProductName</td>
+                <td>@product.ProductPrice</td>
+                <td>
+                    <button class="btn btn-primary mx-1">Modify</button>
+                    <button class="btn btn-danger mx-1">Remove</button>
+                </td>
+            </tr>
             }
         }
         </tbody>
@@ -48,8 +51,6 @@
 <ProductDialog AddOrModify="modify" @ref="modifyDialog" />
 
 @code {
-
-    public Product MenuItem { get; set; }
 
     ProductDialog addDialog;
     ProductDialog modifyDialog;
@@ -67,17 +68,27 @@
         modifyDialog.Show();
     }
 
-    private async void DisplayNewProduct(Product value)
+    private async Task DisplayNewProduct(Product value)
     {
+        addDialog.Close();
         _products.Add(value);
-        await LitvaKebabsContext.AddAsync(value);
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        await context.Product.AddAsync(value);
+        await context.SaveChangesAsync();
     }
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(1000);
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        _products = await context.Product.ToListAsync();
+    }
 
-        _products = await LitvaKebabsContext.Product.ToListAsync();
+    private async Task DeleteProduct(Product product)
+    {
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        context.Product.Remove(product);
+        await context.SaveChangesAsync();
     }
 
 }

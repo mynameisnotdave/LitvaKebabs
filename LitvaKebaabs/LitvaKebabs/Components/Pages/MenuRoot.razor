@@ -1,5 +1,12 @@
 ﻿@page "/menu"
+@using LitvaKebabs.Models
+@using LitvaKebabs.Services
+@using Microsoft.AspNetCore.WebUtilities
+@using Microsoft.EntityFrameworkCore
 @rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
+@inject IDbContextFactory<LitvaKebabsContext> LitvaKebabsContext
+@inject NavigationManager NavMan
 
 
 <PageTitle>Order menu</PageTitle>
@@ -9,13 +16,21 @@
     <div class="align-content-around">
         <PostcodeLookup/>
     </div>
-    <!--@foreach (var menuItem in _menuService.GetMenuItems())
+    @if (_products is null)
     {
-        <button class="order-button" @onclick="@(e => AddToReceipt(menuItem))">
-            <span class="order-button-menu">@menuItem.Name</span>
-            <span class="order-button-price">@menuItem.Price</span>
-        </button>
-    }-->
+        <p>Loading....</p>
+    }
+    else
+    {
+            @foreach (var product in _products)
+             {
+                 <button class="order-button" @onclick="@(e => AddToReceipt(product))">
+                     <span class="order-button-menu">@product.ProductName</span>
+                     <span class="order-button-price">@product.ProductPrice</span>
+                 </button>
+             }
+    }
+
     <p>@ReceiptCount items in receipt</p>
     <ul>
         @foreach (var item in Cart)
@@ -38,3 +53,55 @@
     <!--<OrderButton/> -->
     <!--<Receipt/>-->
 </div>
+
+@code {
+    private List<Product>? _products;
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(60000);
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        _products = await context.Product.ToListAsync();
+    }
+    public int KebabQty { get; set; } = 0;
+
+    private int ReceiptCount = 0;
+    private decimal cartTotal = 0;  
+    private List<Product> Cart;
+    
+
+
+    private void AddToReceipt(Product item)
+    {
+        cartTotal = 0;
+
+        Cart.Add(item);
+        ReceiptCount++;
+    }
+
+    private async Task SubmitOrder()
+    {
+        if (Cart.Count == 0)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Cannot proceed, order has no items. Please add items to the cart and try again.");
+        }
+        else
+        {
+            Random random = new();
+            // I can't wait for the first order to be order 935,312
+            int ranId = random.Next(1, 1000000);
+            Order order = new()
+            {
+                // Please I hope this will not be empty
+                OrderDate = DateTime.Now,
+                OrderQuantity = KebabQty,
+                OrderPrice = cartTotal
+            };
+            
+
+            NavMan.NavigateTo(QueryHelpers.AddQueryString("/order-summary", "id", order.OrderId.ToString()));
+        }
+
+    }
+
+
+}
