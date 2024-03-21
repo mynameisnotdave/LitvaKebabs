@@ -10,6 +10,14 @@
             <DataAnnotationsValidator/>
             <ValidationSummary/>
             <div class="form-group">
+                <label for="customer-first-name">Email:</label>
+                <InputText id="customer-first-name" @bind-Value="CustomerModel!.CustomerEmail" />
+            </div>
+            <div class="form-group">
+                <label for="customer-first-name">Password:</label>
+                <InputText id="customer-first-name" type="password" @bind-Value="CustomerModel!.CustomerPassword" />
+            </div>
+            <div class="form-group">
                 <label for="customer-first-name">First name:</label>
                 <InputText id="customer-first-name" @bind-Value="CustomerModel!.CustomerFirstName" />
             </div>
