@@ -58,8 +58,8 @@
     private List<Product>? _products;
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(600);
         await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        await Task.Delay(100);
         _products = await context.Product.ToListAsync();
     }
     public int KebabQty { get; set; } = 0;
