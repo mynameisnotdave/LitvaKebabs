@@ -12,6 +12,5 @@ namespace LitvaKebabs.Services
         public DbSet<RestaurantReview> RestaurantReview { get; set; }
         public DbSet<ProductReview> ProductReview { get; set; }
         public DbSet<Role> Role { get; set; }
-        public DbSet<User> User { get; set; }
     }
 }

@@ -5,9 +5,9 @@
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     <label for="username">Email address:</label>
-    <InputText id="username" @bind-Value="Model!.UserUsername" />
+    <InputText id="username" @bind-Value="Model!.CustomerEmail" />
     <label for="pwd">Password:</label>
-    <InputText id="pwd" type="password" @bind-Value="Model!.UserPassword" />
+    <InputText id="pwd" type="password" @bind-Value="Model!.CustomerPassword" />
     <input type="submit" class="btn btn-primary" value="Submit" />
 </EditForm>
 
@@ -15,7 +15,7 @@
     [Parameter]
     public string LoginUser { get; set; }
 
-    public User? Model { get; set; }
+    public Customer? Model { get; set; }
 
     protected override void OnInitialized() => Model ??= new();
 

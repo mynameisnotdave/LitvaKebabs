@@ -1,23 +1,53 @@
 @page "/signup"
 @using LitvaKebabs.Models
+@using LitvaKebabs.Services
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<LitvaKebabsContext> LitvaKebabsContext
 <h3>Create an account</h3>
-
-<EditForm FormName="signup-form" Model="@Model" OnValidSubmit="@Submit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
-    <label for="customer-first-name">First name:</label>
-    <InputText id="customer-first-name" @bind-Value="Model.CustomerFirstName" />
-    <label for="customer-last-name">Last name:</label>
-    <InputText id="customer-last-name" @bind-Value="Model.CustomerLastName" />
-    <label for="customer-address">First line of the address:</label>
-    <InputText id="customer-address" @bind-Value="Model.CustomerAddress"/>
-</EditForm>
-
+<main class="container">
+    <div class="flex-column">
+        <EditForm FormName="signup-form" Model="CustomerModel" OnValidSubmit="SubmitCustomerDetails">
+            <DataAnnotationsValidator/>
+            <ValidationSummary/>
+            <div class="form-group">
+                <label for="customer-first-name">First name:</label>
+                <InputText id="customer-first-name" @bind-Value="CustomerModel!.CustomerFirstName" />
+            </div>
+            <div class="form-group">
+                <label for="customer-last-name">Last name:</label>
+                <InputText id="customer-last-name" @bind-Value="CustomerModel!.CustomerLastName" />
+            </div> 
+            <div class="form-group">
+                <label for="customer-address">First line of the address:</label>
+                <InputText id="customer-address" @bind-Value="CustomerModel!.CustomerAddress"/>
+            </div>
+            <div class="form-group">
+                <label for="customer-posttown">Town or city:</label>
+                <InputText id="customer-posttown" @bind-Value="CustomerModel!.CustomerPostTown"/>
+            </div>
+            <div class="form-group">
+                <label for="customer-postcode">Postcode:</label>
+                <InputText id="customer-postcode" @bind-Value="CustomerModel!.CustomerPostcode" />
+            </div>
+            <div class="form-group">
+                <label for="customer-phone">Phone number:</label>
+                <InputText inputmode="tel" @bind-Value="CustomerModel!.CustomerPhone" />
+            </div>
+        </EditForm>
+        @if(success) {
+            <p class="text-success">Thanks, your customer details were created.</p>
+        }
+    </div>
+</main>
 @code {
-    public Customer Model;
-
-    public void Submit()
+    public Customer? CustomerModel = new Customer();
+    private bool success = false;
+    private async Task SubmitCustomerDetails()
     {
-        throw new NotImplementedException();
+        await using var context = await LitvaKebabsContext.CreateDbContextAsync();
+        await Task.Delay(100);
+        await context.Customer.AddAsync(CustomerModel ?? new Customer());
+        await context.SaveChangesAsync();
+        success = true;
     }
 }
