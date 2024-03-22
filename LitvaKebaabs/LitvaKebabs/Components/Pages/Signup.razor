@@ -3,6 +3,9 @@
 @using LitvaKebabs.Services
 @using Microsoft.EntityFrameworkCore
 @inject IDbContextFactory<LitvaKebabsContext> LitvaKebabsContext
+
+<PageTitle>Create an account | LitvaKebabs</PageTitle>
+
 <h3>Create an account</h3>
 
         <EditForm FormName="signup-form" Model="CustomerModel" OnValidSubmit="SubmitCustomerDetails">
