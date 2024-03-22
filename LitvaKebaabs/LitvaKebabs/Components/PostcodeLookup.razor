@@ -2,7 +2,7 @@
 
 <div class="postcode-input">
 <input type="text" @bind="DeliveringToPostcode" />
-<button type="submit" class="rounded-2" @onclick="OnPostcodeLookupButtonClicked">Lookup postcode</button>
+<button type="submit" class="btn btn-primary" @onclick="OnPostcodeLookupButtonClicked">Lookup postcode</button>
 </div>
 @if(GetDistance() < 5.1)
 {
@@ -11,5 +11,5 @@
 // I'm not sure what could get rid of this error message
 else if (GetDistance() > 5.1 || DeliveringToPostcode is null)
 {
-    <span class="postcode-too-far">@DeliveringToPostcode is too far from @deliveringFromPostcode! @DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi away.</span>
+    <span class="text-danger">@DeliveringToPostcode is too far from @deliveringFromPostcode! @DeliveringToPostcode is @Math.Round(GetDistance(), 1)mi away.</span>
 }

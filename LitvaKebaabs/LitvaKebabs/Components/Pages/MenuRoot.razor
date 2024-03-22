@@ -24,7 +24,7 @@
     {
             @foreach (var product in _products)
              {
-                 <button class="order-button" @onclick="@(e => AddToReceipt(product))">
+                 <button class="btn btn-warning mx-1" @onclick="@(() => AddToReceipt(product))">
                      <span class="order-button-menu">@product.ProductName</span>
                      <span class="order-button-price">@product.ProductPrice</span>
                  </button>

@@ -1,5 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+@inject NavigationManager NavMan
 
 <PageTitle>Litva Kebabs Order System v0.0.1</PageTitle>
 
@@ -22,11 +23,13 @@
        <LoginForm LoginUser="staff" /> 
     }
     <div class="p-3">
-        <button class="btn btn-primary">Sign up</button>
+        <button class="btn btn-primary" onclick="(() => NavMan.NavigateTo("/signup"))">Sign up</button>
     </div>
 </div>
 
 @code {
     bool ShowCustomerComponent { get; set; } = false;
     bool ShowStaffComponent { get; set; } = false;
+
+    private void GoToSignup() => NavMan.NavigateTo("/signup");
 }
