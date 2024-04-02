@@ -38,11 +38,10 @@
                     <td>
                         <button class="btn btn-primary mx-1!" @onclick="@(() => OnAmendedItem(product))">Modify</button>
                         <button class="btn btn-danger mx-1" @onclick="@(() => DeleteProduct(product))">Remove</button>
-                        <ProductDialog
-                            AddOrModify="modify"
-                            @ref="modifyDialog"
-                            ProductToModify="_products.FirstOrDefault(p => modifyDialogId == p.ProductId)"
-                            ProductState="@ModifyProduct"/>
+                        <ProductDialog AddOrModify="modify"
+                                           @ref="dialogRef"
+                                           ProductToModify="product"
+                                           ProductState="@ModifyProduct" />
                     </td>
                 </tr>
             }
@@ -62,6 +61,12 @@
     ProductDialog? addDialog;
     ProductDialog? modifyDialog;
 
+    IList<ProductDialog> dialogList = new List<ProductDialog>();
+    ProductDialog dialogRef
+    {
+        set { dialogList.Add(value); }
+    }
+
     private List<Product>? _products;
 
 
@@ -72,9 +77,10 @@
 
     private void OnAmendedItem(Product product)
     {
-        /*addDialog.EditingMenuItem = menuItem;*/
-        modifyDialogId = product.ProductId;
-        modifyDialog?.Show();
+        /*addDialog.EditingMenuItem = menuItem;*/        
+        var dialog = dialogList.FirstOrDefault(m => m.AddOrModify == "modify" && m.ProductToModify == product);
+
+        dialog.Show();
     }
 
     private async Task DisplayNewProduct(Product value)
@@ -96,7 +102,6 @@
     private async Task ModifyProduct(Product value)
     {
         modifyDialog?.Close();
-        modifyDialogId = null!;
         var obj = _products?.FirstOrDefault(x => x.ProductId == value.ProductId);
         if (obj != null)
         {
