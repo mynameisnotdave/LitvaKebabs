@@ -44,22 +44,23 @@
                 </div>
                 } else if(AddOrModify == "modify") {
                     <div class="modal-body">
-                    <EditForm FormName="modify-product" Model="@ProductToModify" OnValidSubmit="@HandleValidUpdate">
-                        <DataAnnotationsValidator />
-                        <ValidationSummary />
-                        <div class="form-group">
-                            <label for="lastName">Menu item name: </label>
-                            <InputText id="menuItem" class="form-control" @bind-Value="@ProductToModify!.ProductName" placeholder="Enter name of menu item"></InputText>
-                            <ValidationMessage For="@(() => Product.ProductName)" />
-                        </div>
-                        <div class="form-group">
-                            <label for="firstName">Menu item price: </label>
-                            <InputNumber id="menuPrice" class="form-control" @bind-Value="ProductToModify!.ProductPrice" placeholder="Enter menu item price"></InputNumber>
-                            <ValidationMessage For="@(() => Product.ProductPrice)" />
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-2">Save menu item</button>
-                        <a class="btn btn-outline-primary mt-2" @onclick="@Close">Close</a>
-                    </EditForm>
+                        <EditForm FormName="modify-product" Model="@ProductToModify" OnValidSubmit="@HandleValidUpdate">
+                            <p>Product ID is @ProductToModify?.ProductId</p>
+                            <DataAnnotationsValidator/>
+                            <ValidationSummary/>
+                            <div class="form-group">
+                                <label for="lastName">Menu item name: </label>
+                                <InputText id="menuItem" class="form-control" @bind-Value="@ProductToModify!.ProductName" placeholder="Enter name of menu item"></InputText>
+                                <ValidationMessage For="@(() => ProductToModify.ProductName)"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">Menu item price: </label>
+                                <InputNumber id="menuPrice" class="form-control" @bind-Value="ProductToModify!.ProductPrice" placeholder="Enter menu item price"></InputNumber>
+                                <ValidationMessage For="@(() => ProductToModify.ProductPrice)"/>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Save menu item</button>
+                            <a class="btn btn-outline-primary mt-2" @onclick="@Close">Close</a>
+                        </EditForm>
                 </div>
                 }
 

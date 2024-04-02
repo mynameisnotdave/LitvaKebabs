@@ -2,7 +2,6 @@
 using LitvaKebabs.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using LitvaKebabs.Client.Pages;
 
 namespace LitvaKebabs.Components.Pages
 {
